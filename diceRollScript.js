@@ -1,9 +1,12 @@
 //Makes the Enter key the activator
-document.addEventListener("keydown", function (event) {
+document.getElementById("rollButton").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         rollDice();
     }
 });
+
+// Roll when the button is clicked
+document.getElementById("rollButton").addEventListener("click", rollDice);
 
 //Allows for the dice to be pre-rolled
 window.onload = rollDice;

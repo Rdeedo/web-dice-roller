@@ -10,6 +10,19 @@ h3{
     text-align: center;
 }
 
+button {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
 .playerRoll {
     color: green;
     font-size: 60px;
