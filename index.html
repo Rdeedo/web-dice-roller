@@ -9,16 +9,20 @@
     <h3>Press enter or click to roll the dice!</h3>
     <button id="rollButton" autofocus>Roll</button>
 
+    <h3>Player Roll</h3>
     <section class="playerRoll">
-      <p id="result"></p>
+      <input type="number" id="playerRoll" readonly>
     </section>
-    
-    <h3>Opponent roll</h3>
+
+    <h3>Opponent Roll</h3>
     <section class="opponentRoll">
-      <p id="opponentResult"></p>
+      <input type="number" id="opponentRoll" readonly>
     </section>
-    
+
+    <h3>Result</h3>
+    <section class="resultMessage">
+      <input type="text" id="resultMessage" readonly>
+    </section>
     <script src="diceRollScript.js"></script>
-    <h1 id="resultMessage"></h1>
   </body>
 </html>
