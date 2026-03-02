@@ -1,3 +1,5 @@
+const API = "https://web-dice-nodejs-e3c5ajhfezd5gdg0.centralus-01.azurewebsites.net"
+
 //Makes the Enter key the activator
 document.getElementById("rollButton").addEventListener("click", rollDice);
 
@@ -9,21 +11,36 @@ document.getElementById("rollButton").addEventListener("keydown", function (even
 
 //Allows for the dice to be pre-rolled
 window.onload = rollDice;
+window.onload = wakeServer;
 
-function rollDice() {
-    //Rolls 2 random numbers from 1-6
-    const roll = Math.floor(Math.random() * 6) + 1;
-    const opponentRoll = Math.floor(Math.random() * 6) + 1;
+async function rollDice()
+{
+    try
+    {
+        const response =
+            await fetch(API + "/api/roll?dice=1&sides=6");
 
-    document.getElementById("playerRoll").value = roll;
-    document.getElementById("opponentRoll").value = opponentRoll;
-    
-    //Creates a result message that changes with the comparison below
-    if (roll > opponentRoll) {
-        document.getElementById("resultMessage").value = "Player Wins!";
-    } else if (roll < opponentRoll) {
-        document.getElementById("resultMessage").value = "Opponent Wins!";
-    } else {
-        document.getElementById("resultMessage").value = "It's a Draw!";
+        const data =
+            await response.json();
+
+        document.getElementById("result").value =
+            data.rolls[0];
+    }
+    catch(error)
+    {
+        console.log("Roll failed:", error);
+    }
+}
+
+async function wakeServer()
+{
+    try
+    {
+        await fetch(API + "/api");
+        console.log("Server awake");
+    }
+    catch(error)
+    {
+        console.log("Wake failed:", error);
     }
 }
